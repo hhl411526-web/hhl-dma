@@ -61,8 +61,8 @@ pub trait DatabaseDriver: Send + Sync {
     /// 插件元信息
     fn info(&self) -> DriverInfo;
 
-    /// 建立连接
-    async fn connect(&self, config: &ConnectionConfig) -> Result<Connection>;
+    /// 建立连接，返回连接ID
+    async fn connect(&self, config: &ConnectionConfig) -> Result<String>;
 
     /// 断开连接
     async fn disconnect(&self, conn_id: &str) -> Result<()>;
